@@ -265,7 +265,6 @@ public class SimpleMonthView extends View {
                 mMonthNumPaint.setColor(mDayNumColor);
                 mMonthNumPaint.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
             }
-
             if ((mMonth == mSelectedBeginMonth && mSelectedBeginDay == day && mSelectedBeginYear == mYear) || (mMonth == mSelectedLastMonth && mSelectedLastDay == day && mSelectedLastYear == mYear))
                 mMonthNumPaint.setColor(mMonthTitleBGColor);
 
@@ -305,8 +304,9 @@ public class SimpleMonthView extends View {
             return null;
         }
 
-        int yDay = (int) (y - MONTH_HEADER_SIZE) / mRowHeight;
-        int day = 1 + ((int) ((x - padding) * mNumDays / (mWidth - padding - mPadding)) - findDayOffset()) + yDay * mNumDays;
+        int yDay = (int) (y - MONTH_HEADER_SIZE / 2) / mRowHeight;
+        int day = 1 + ((int) ((x - padding) * mNumDays / (mWidth - padding - mPadding))
+                - findDayOffset()) + yDay * mNumDays;
 
         if (mMonth > 11 || mMonth < 0 || CalendarUtils.getDaysInMonth(mMonth, mYear) < day || day < 1)
             return null;
@@ -365,7 +365,7 @@ public class SimpleMonthView extends View {
     }
 
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        setMeasuredDimension(MeasureSpec.getSize(widthMeasureSpec), mRowHeight * mNumRows + 50);
+        setMeasuredDimension(MeasureSpec.getSize(widthMeasureSpec), mRowHeight * mNumRows + 90);
     }
 
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
@@ -385,7 +385,6 @@ public class SimpleMonthView extends View {
     public void reuse() {
         mNumRows = DEFAULT_NUM_ROWS;
         requestLayout();
-        
     }
 
     public void setMonthParams(HashMap<String, Integer> params) {
