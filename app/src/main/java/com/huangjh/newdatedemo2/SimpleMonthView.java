@@ -120,7 +120,7 @@ public class SimpleMonthView extends View {
         mDayNumColor = typedArray.getColor(R.styleable.DayPickerView_colorNormalDay, resources.getColor(R.color.normal_day));
         mPreviousDayColor = typedArray.getColor(R.styleable.DayPickerView_colorPreviousDay, resources.getColor(R.color.normal_day));
         mSelectedDaysColor = typedArray.getColor(R.styleable.DayPickerView_colorSelectedDayBackground, resources.getColor(R.color.selected_day_background));
-        mMonthTitleBGColor = typedArray.getColor(R.styleable.DayPickerView_colorSelectedDayText, resources.getColor(R.color.normal_day));
+        mMonthTitleBGColor = typedArray.getColor(R.styleable.DayPickerView_colorSelectedDayText, resources.getColor(R.color.selected_day_text));
         mIsShowMonthDay = typedArray.getBoolean(R.styleable.DayPickerView_showMonthDay, true);
         mDrawRect = typedArray.getBoolean(R.styleable.DayPickerView_drawRoundRect, false);
 
@@ -259,12 +259,12 @@ public class SimpleMonthView extends View {
                 }
             }
 //            今日颜色
-            if (mHasToday && (mToday == day)) {
-                mMonthNumPaint.setColor(mCurrentDayTextColor);
-            } else {
+//            if (mHasToday && (mToday == day)) {
+//                mMonthNumPaint.setColor(mDayNumColor);
+//            } else {
                 mMonthNumPaint.setColor(mDayNumColor);
                 mMonthNumPaint.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
-            }
+//            }
             if ((mMonth == mSelectedBeginMonth && mSelectedBeginDay == day && mSelectedBeginYear == mYear) || (mMonth == mSelectedLastMonth && mSelectedLastDay == day && mSelectedLastYear == mYear))
                 mMonthNumPaint.setColor(mMonthTitleBGColor);
 
