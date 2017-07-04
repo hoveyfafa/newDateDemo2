@@ -385,6 +385,7 @@ public class SimpleMonthView extends View {
     public void reuse() {
         mNumRows = DEFAULT_NUM_ROWS;
         requestLayout();
+        
     }
 
     public void setMonthParams(HashMap<String, Integer> params) {
